@@ -12,6 +12,8 @@
 
     <script>
 
+        // No longer used. This was the original dictonary before implementing
+        // the random word api
         let dictonary = ["APPLE", "ARIEL", "ATOMS", 
                         "BANDS", "BREAK", "BAKER",
                         "CAGES", "CAMEL", "CAKES",
@@ -25,9 +27,16 @@
                         "KNEED", "KARMA", "KAYAK",
                         "LABEL", "LAUGH", "LEAKY"];
 
+        // Found on stack overflow, uses Math.random() to generate a random number
+        // and multiplies it by the dictonary length to randomly select
+        // a word from the dictonary
+        //let game_answer = dictonary[Math.floor(Math.random() * dictonary.length)];
+        //console.log("The answer is: " + game_answer);
+
+
         // EXTRA CREDIT, GETS A RANDOM 5 LETTER WORD
         function getRandomWord(){
-            var url = " https://random-word-api.herokuapp.com/word?length=5";
+            var url = "https://random-word-api.herokuapp.com/word?length=5";
             
             //Sends a GET request
             var req = new XMLHttpRequest();
@@ -46,11 +55,6 @@
             req.send();
         }
         
-        // Found on stack overflow, uses Math.random() to generate a random number
-        // and multiplies it by the dictonary length to randomly select
-        // a word from the dictonary
-        //let game_answer = dictonary[Math.floor(Math.random() * dictonary.length)];
-        //console.log("The answer is: " + game_answer);
         
          // Setting the rows and cols of the wordle game and creating a tracking
         // variable to keep the current row
@@ -101,7 +105,7 @@
             guess = guess.toUpperCase();
             answer = answer.toUpperCase();
 
-            // Creates arrays to hold the character counts in a word and
+            // Creates an object to hold the character counts in a word and
             // an array to hold the result of each letters status
             let result = Array(cols).fill("");
             let counts = {};
@@ -166,6 +170,8 @@
                 if(curKey.classList.contains("correct")){continue;}
                 if(curKey.classList.contains("present") && status == "incorrect"){continue;}
 
+                // removes previous classes to allow a letter to be upgraded on the keyboard
+                curKey.classList.remove("correct", "present", "incorrect");
                 curKey.classList.add(status);
             }
         }
@@ -215,7 +221,7 @@
             createKB();
             getRandomWord();
             
-            /* 
+            /* TEST  
             let test = "APPLE";
             // Fills in the current row with the user's guess
             for(let c = 0; c < cols; c++){
@@ -245,18 +251,21 @@
                 colorRow(result);
                 colorKB(input, result);
 
-                // Pop up and disables guess btn if user guesses the word
+                // Pop up and ends game if the user guesses the word
                 if(input === game_answer){
                     endGame("Congradulations! You've Won!!"); 
+                    inputBox.value = "";
+                    return;
                 }
 
                 // Updates the curRow and clears the input box after every guess
                 curRow++;
                 inputBox.value = "";
 
-                // Ends the game and disable guess btn if all guesses are used
+                // Ends the game if all guesses are used
                 if(curRow === rows){
                     endGame("Out Of Guesses! The answer was: " + game_answer); 
+                    return;
                 }
             });
 
