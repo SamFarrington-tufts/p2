@@ -253,7 +253,7 @@
 
                 // Pop up and ends game if the user guesses the word
                 if(input === game_answer){
-                    endGame("Congratulations! You've Won!!"); 
+                    endGame("Congratulations! You've Won!"); 
                     inputBox.value = "";
                     return;
                 }
@@ -264,7 +264,7 @@
 
                 // Ends the game if all guesses are used
                 if(curRow === rows){
-                    endGame("Out Of Guesses! The answer was: " + game_answer); 
+                    endGame("Out of Guesses! The answer was: " + game_answer); 
                     return;
                 }
             });
