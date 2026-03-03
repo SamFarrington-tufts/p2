@@ -12,6 +12,8 @@
 
     <script>
 
+        // No longer used. This was the original dictonary before implementing
+        // the random word api
         let dictonary = ["APPLE", "ARIEL", "ATOMS", 
                         "BANDS", "BREAK", "BAKER",
                         "CAGES", "CAMEL", "CAKES",
@@ -24,6 +26,13 @@
                         "JUICE", "JUROR", "JOINT",
                         "KNEED", "KARMA", "KAYAK",
                         "LABEL", "LAUGH", "LEAKY"];
+
+        // Found on stack overflow, uses Math.random() to generate a random number
+        // and multiplies it by the dictonary length to randomly select
+        // a word from the dictonary
+        //let game_answer = dictonary[Math.floor(Math.random() * dictonary.length)];
+        //console.log("The answer is: " + game_answer);
+
 
         // EXTRA CREDIT, GETS A RANDOM 5 LETTER WORD
         function getRandomWord(){
@@ -46,11 +55,6 @@
             req.send();
         }
         
-        // Found on stack overflow, uses Math.random() to generate a random number
-        // and multiplies it by the dictonary length to randomly select
-        // a word from the dictonary
-        //let game_answer = dictonary[Math.floor(Math.random() * dictonary.length)];
-        //console.log("The answer is: " + game_answer);
         
          // Setting the rows and cols of the wordle game and creating a tracking
         // variable to keep the current row
