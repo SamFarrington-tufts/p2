@@ -190,8 +190,13 @@
         // reseting the display and visibility settings
         function restartGame(boardObj){
             curRow = 0;
+            
+            /* No longer used due to extra credit API task
             game_answer = dictonary[Math.floor(Math.random() * dictonary.length)];
             console.log("The answer is: " + game_answer);
+            */
+
+            getRandomWord();
 
             document.getElementById("board").innerHTML = "";
             document.getElementById("keyboard").innerHTML = "";
