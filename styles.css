@@ -1,12 +1,29 @@
-/*Font for everything*/
-body{font-family: 'Roboto', sans-serif;}
+/*Font for everything, centers everything inside vertically and horizontally,
+  adds a background image*/
+body{
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url(background.jpg);
+    background-size: cover;
+    }
+
+body h1{
+    margin: 30px;
+    font-size: 50px;
+}
 
 /*Centers everything on the page and sets a max width*/
 #wrapper{
     display: block;
-    max-width: 600px;
     margin: 0 auto;
     text-align: center;
+    background-color: #ffffff;
+    padding: 25px;
+    width: 700px;
+    min-width: 600px;
 }
 
 /*Creates a 5x6 grid with 10px gaps*/
@@ -93,7 +110,7 @@ sets font size and weight, sets padding and margin of each key*/
     margin: 0 auto;
     width: 340px;
     padding: 10px;
-    margin-top: 15px;
+    margin: 20px 0;
 }
 
 /*Hover effect for the resart button*/
