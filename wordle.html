@@ -166,6 +166,9 @@
                 if(curKey.classList.contains("correct")){continue;}
                 if(curKey.classList.contains("present") && status == "incorrect"){continue;}
 
+                // removes previous classes to allow a letter to be upgraded from present
+                // to correct on the keyboard
+                curKey.classList.remove("correct", "present");
                 curKey.classList.add(status);
             }
         }
