@@ -252,18 +252,20 @@
                 colorRow(result);
                 colorKB(input, result);
 
-                // Pop up and disables guess btn if user guesses the word
+                // Pop up and ends game if the user guesses the word
                 if(input === game_answer){
                     endGame("Congradulations! You've Won!!"); 
+                    return;
                 }
 
                 // Updates the curRow and clears the input box after every guess
                 curRow++;
                 inputBox.value = "";
 
-                // Ends the game and disable guess btn if all guesses are used
+                // Ends the game if all guesses are used
                 if(curRow === rows){
                     endGame("Out Of Guesses! The answer was: " + game_answer); 
+                    return;
                 }
             });
 
